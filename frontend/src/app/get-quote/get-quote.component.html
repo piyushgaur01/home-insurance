@@ -1,0 +1,27 @@
+<br>
+<div class="jumbotron">
+  <h1 class="display-4">Get Quote</h1>
+  <p class="lead">Fill the forms below to get a quote.</p>
+  <hr class="my-4">
+  <div class="col-md-8 offset-md-2 mt-5">
+    <div class="card">
+      <h4 class="card-header"><span *ngIf="pageIndex < 3" class="badge badge-primary badge-pill">{{pageIndex+1}}</span>
+        {{pages[pageIndex]}}
+      </h4>
+      <div class="card-body">
+        <app-location *ngIf="pageIndex === 0" [locationForm]="locationForm"
+          (formValue)="addFormValues($event, 'location')">
+        </app-location>
+        <app-homeowner *ngIf="pageIndex === 1" [homeownerForm]="homeownerForm"
+          (formValue)="addFormValues($event, 'homeowner')" (pageIndexEvent)="changePageIndex($event)">
+        </app-homeowner>
+        <app-property *ngIf="pageIndex === 2" [propertyForm]="propertyForm"
+          (formValue)="addFormValues($event, 'property')" (pageIndexEvent)="changePageIndex($event)">
+        </app-property>
+        <app-quotation *ngIf="pageIndex === 3" [isRouted]="false"
+          (pageIndexEvent)="changePageIndex($event)"></app-quotation>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>

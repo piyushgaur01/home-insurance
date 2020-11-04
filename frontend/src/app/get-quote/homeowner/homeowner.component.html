@@ -1,0 +1,73 @@
+<form [formGroup]="homeownerForm">
+  <div class="row">
+    <div class="form-group col">
+      <label for="firstname">First Name</label>
+      <input type="text" formControlName="firstname" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" />
+      <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+        <div *ngIf="f.firstname.errors.required">Firstname is required</div>
+      </div>
+    </div>
+    <div class="form-group col">
+      <label for="lastname">Last Name</label>
+      <input type="text" formControlName="lastname" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" />
+      <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+        <div *ngIf="f.lastname.errors.required">Lastname is required</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="dob">Date of birth</label>
+    <input type="date" formControlName="dob" class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.dob.errors }" />
+    <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+      <div *ngIf="f.dob.errors.required">DOB is required</div>
+    </div>
+  </div>
+  <label for="city">Are you retired?</label>
+  <div class="form-group row">
+    <div class="col">
+        <div class="custom-control custom-radio">
+            <input id="no" type="radio" class="custom-control-input" value="no" formControlName="retired">
+            <label class="custom-control-label" for="no">No</label>
+          </div>
+    </div>
+    <div class="col">
+        <div class="custom-control custom-radio">
+            <input id="yes" type="radio" class="custom-control-input" value="yes" formControlName="retired">
+            <label class="custom-control-label" for="yes">Yes</label>
+          </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="ssn">Social Security Number</label>
+    <input type="text" formControlName="ssn" class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.ssn.errors }" />
+    <div *ngIf="submitted && f.ssn.errors" class="invalid-feedback">
+      <div *ngIf="f.ssn.errors.required">ssn is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email">Email Address</label>
+    <input type="email" formControlName="email" class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+      <div *ngIf="f.email.errors.required">email is required</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button type="button" class="btn btn-primary" (click)="changePageIndex(0)">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Back
+      </button>
+    </div>
+    <div class="col text-right">
+      <button type="button" class="btn btn-success" (click)="save()">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Save & Next
+      </button>
+    </div>
+  </div>
+</form>

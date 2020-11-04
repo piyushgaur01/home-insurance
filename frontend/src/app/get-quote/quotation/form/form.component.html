@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-7">
+    <strong>Quote ID</strong>
+  </div>
+  <div class="col-5 text-right">
+    <span class="badge badge-primary" (click)="showModal()">
+      <a>{{quotationForm.id}}</a>
+    </span>
+  </div>
+</div>
+<div class="row">
+  <div class="col-7">
+    <strong>Monthly Premium</strong>
+  </div>
+  <div class="col-5 text-right">${{quotationForm.monthlyPremium | number:'1.2-2'}}</div>
+</div>
+<div class="row">
+  <div class="col-7">
+    <strong>Dwelling Coverage</strong>
+  </div>
+  <div class="col-5 text-right">${{quotationForm.dwellingCoverage | number:'1.2-2'}}</div>
+</div>
+<div class="row">
+  <div class="col-7">
+    <strong>Detached Structures</strong>
+  </div>
+  <div class="col-5 text-right">${{quotationForm.detachedStructures | number:'1.2-2'}}</div>
+</div>
+<div class="row">
+  <div class="col-7">
+    <strong>Personal Property</strong>
+  </div>
+  <div class="col-5 text-right">${{quotationForm.personalProperty | number:'1.2-2'}}</div>
+</div>
+<div class="row">
+  <div class="col-7">
+    <strong>Medical Expense</strong>
+  </div>
+  <div class="col-5 text-right">${{quotationForm.medicalExpense | number:'1.2-2'}}</div>
+</div>
+<div class="row">
+  <div class="col-7">
+    <strong>Additional Living Expenses</strong>
+  </div>
+  <div class="col-5 text-right">${{quotationForm.additionalLivingExpenses | number:'1.2-2'}}</div>
+</div>

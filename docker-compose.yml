@@ -1,0 +1,41 @@
+version: '3.4'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: .dockerfile
+    ports:
+      - "4200:80"
+    networks:
+      - home-insurance
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: .dockerfile
+    ports:
+      - "9090:9090"
+    networks:
+      - home-insurance
+    depends_on:
+      - mysql-db
+
+  mysql-db:
+    image: mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - ACCEPT_EULA=Y
+    volumes:
+      - c:/temp/docker/mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - home-insurance
+
+networks:
+  home-insurance:
+    driver: bridge

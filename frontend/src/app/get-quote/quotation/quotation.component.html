@@ -1,0 +1,107 @@
+<br>
+<div class="jumbotron" *ngIf="isRouted !== false">
+  <div class="col-md-8 offset-md-2 mt-5">
+    <div class="card">
+      <h4 class="card-header">Quotation</h4>
+      <div class="card-body">
+        <div>
+          <app-form [quotationForm]="quotationForm" (openModal)="showModal()"></app-form>
+          <br>
+          <div class="row" *ngIf="!policyExists">
+            <div class="col">
+              <form class="form-inline">
+                <div class="form-group">
+                  <label for="startdate">Policy start date</label>
+                  <input type="date" name="startdate" class="form-control" [(ngModel)]="startdate"
+                    [ngClass]="{ 'is-invalid': submitted && invalidStartDate }" />
+                  <div *ngIf="submitted && invalidStartDate" class="invalid-feedback">
+                    <div *ngIf="invalidStartDate">Start date is required</div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col text-right">
+              <button type="button" class="btn btn-success" (click)="buyPolicy()">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Buy Policy
+              </button>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+        <div *ngIf="success" class="alert alert-info mt-3 mb-0">{{success}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="isRouted === false">
+  <app-form [quotationForm]="quotationForm" (openModal)="showModal()"></app-form>
+  <br>
+  <div class="row">
+    <div class="col">
+      <button type="button" class="btn btn-primary" (click)="changePageIndex(2)">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Back
+      </button>
+    </div>
+    <div class="col" *ngIf="!policyExists">
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="startdate">Policy start date</label>
+          <input type="date" name="startdate" class="form-control" [(ngModel)]="startdate"
+            [ngClass]="{ 'is-invalid': submitted && invalidStartDate }" />
+          <div *ngIf="submitted && invalidStartDate" class="invalid-feedback">
+            <div *ngIf="invalidStartDate">Start date is required</div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col text-right">
+      <button type="button" class="btn btn-success" (click)="buyPolicy()">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Buy Policy
+      </button>
+    </div>
+  </div>
+  <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+  <div *ngIf="success" class="alert alert-info mt-3 mb-0">{{success}}</div>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Summary</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-5">
+            <strong>Quote ID</strong>
+          </div>
+          <div class="col-7">{{quotationForm.id}}</div>
+        </div>
+        <div class="row" *ngFor="let item of quotationForm.location | keyvalue">
+          <div class="col-5"><strong>{{item.key}}</strong></div>
+          <div class="col-7">{{item.value}}</div>
+        </div>
+        <div class="row" *ngFor="let item of quotationForm.homeowner | keyvalue">
+          <div class="col-5"><strong>{{item.key}}</strong></div>
+          <div class="col-7">{{item.value}}</div>
+        </div>
+        <div class="row" *ngFor="let item of quotationForm.property | keyvalue">
+          <div class="col-5"><strong>{{item.key}}</strong></div>
+          <div class="col-7">{{item.value}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

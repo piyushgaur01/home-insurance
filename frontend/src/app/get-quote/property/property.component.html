@@ -1,0 +1,110 @@
+<form [formGroup]="propertyForm">
+  <div class="form-group">
+    <label for="marketvalue">What is the market value of your home?</label>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text">$</div>
+      </div>
+      <input type="text" formControlName="marketValue" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.marketValue.errors }" />
+    </div>
+    <div *ngIf="submitted && f.marketValue.errors" class="invalid-feedback">
+      <div *ngIf="f.marketValue.errors.required">marketvalue is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="yearbuilt">What year was your home originally built?</label>
+    <input type="number" formControlName="yearBuilt" class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.yearBuilt.errors }" />
+    <div *ngIf="submitted && f.yearBuilt.errors" class="invalid-feedback">
+      <div *ngIf="f.yearBuilt.errors.required">yearbuilt is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="footage">Square footage</label>
+    <div class="input-group">
+      <input type="number" formControlName="footage" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.footage.errors }" />
+      <div class="input-group-append">
+        <div class="input-group-text">sqft</div>
+      </div>
+    </div>
+    <div *ngIf="submitted && f.footage.errors" class="invalid-feedback">
+      <div *ngIf="f.footage.errors.required">footage is required</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col">
+      <label for="dwellingStyle">Dwelling Style</label>
+      <select formControlName="dwellingStyle" class="form-control" required name="dwellingStyle">
+        <option *ngFor="let item of dwellingStyles" [value]="item">{{item}}</option>
+      </select>
+    </div>
+    <div class="form-group col">
+      <label for="roof-material">Roof Material</label>
+      <select formControlName="roofMaterial" class="form-control" required name="roofMaterial">
+        <option *ngFor="let item of roofMaterials" [value]="item">{{item}}</option>
+      </select>
+    </div>
+    <div class="form-group col">
+      <label for="garage">Garage</label>
+      <select formControlName="garage" class="form-control" required name="garage">
+        <option *ngFor="let item of garage" [value]="item">{{item}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col">
+      <label for="fullbaths">Number of full baths</label>
+      <select formControlName="fullBath" class="form-control" required name="fullBath">
+        <option *ngFor="let item of fullBaths" [value]="item">{{item}}</option>
+      </select>
+    </div>
+
+    <div class="form-group col">
+      <label for="halfbaths">Number of half baths</label>
+      <select formControlName="halfBath" class="form-control" required name="halfBath">
+        <option *ngFor="let item of halfBaths" [value]="item">{{item}}</option>
+      </select>
+    </div>
+  </div>
+  <label for="city">Does your home have a swimming pool?</label>
+  <div class="form-group row">
+    <div class="col">
+      <div class="custom-control custom-radio">
+        <input id="no" type="radio" class="custom-control-input" value="no" formControlName="swimmingPool">
+        <label class="custom-control-label" for="no">No</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="custom-control custom-radio">
+        <input id="yes" type="radio" class="custom-control-input" value="yes" formControlName="swimmingPool">
+        <label class="custom-control-label" for="yes">Yes</label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button type="button" class="btn btn-primary" (click)="changePageIndex(1)">
+        Back
+      </button>
+    </div>
+    <div class="col text-right">
+      <button type="button" class="btn btn-warning" (click)="save()">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Generate Quotation
+      </button>
+    </div>
+  </div>
+</form>
+
+<!-- 
+What is the market value of your home?
+What year was your home originally built?
+Square footage
+Dwelling style
+Roof material
+Type of Garage
+Number of full baths
+Number of half baths
+Does yourhome have a swimming pool? -->
