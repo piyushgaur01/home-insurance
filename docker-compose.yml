@@ -7,6 +7,7 @@ services:
       dockerfile: .dockerfile
     ports:
       - "4200:80"
+    restart: on-failure
     networks:
       - home-insurance
     depends_on:
@@ -16,21 +17,26 @@ services:
     build:
       context: ./backend
       dockerfile: .dockerfile
+    restart: on-failure
     ports:
       - "9090:9090"
     networks:
       - home-insurance
     depends_on:
       - mysql-db
+    links: 
+      - mysql-db
 
   mysql-db:
     image: mysql
     restart: always
     environment:
+      - MYSQL_DATABASE=insurance
       - MYSQL_ROOT_PASSWORD=password
       - ACCEPT_EULA=Y
     volumes:
-      - c:/temp/docker/mysql-data:/var/lib/mysql
+      - "./mysql/data:/var/lib/mysql"
+      - "./mysql/scripts/schema.sql:/docker-entrypoint-initdb.d/1.sql"
     ports:
       - "3306:3306"
     networks:
@@ -39,3 +45,5 @@ services:
 networks:
   home-insurance:
     driver: bridge
+
+# c:/temp/docker
