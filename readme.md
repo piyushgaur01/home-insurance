@@ -28,3 +28,13 @@ docker ps
 # b878be4c94c1        home-insurance_backend    "java -cp app:app/li…"   10 minutes ago      Up 4 seconds        0.0.0.0:9090->9090/tcp              home-insurance_backend_1
 # a60eb089e5f9        mysql                     "docker-entrypoint.s…"   10 minutes ago      Up 5 seconds        0.0.0.0:3306->3306/tcp, 33060/tcp   home-insurance_mysql-db_1
 ```
+
+# Running Project
+
+Once all the services have been started. Open [http://localhost:4200](http://localhost:4200) and you should be able to see a UI. 
+
+Admin Credentials: `admin/admin`
+
+Create normal (non-admin) users by clicking on `Create New Account` button
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8f6aa227-b9fd-4de4-b828-636926457ef7/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8f6aa227-b9fd-4de4-b828-636926457ef7/Untitled.png)
