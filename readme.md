@@ -37,4 +37,4 @@ Admin Credentials: `admin/admin`
 
 Create normal (non-admin) users by clicking on `Create New Account` button
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8f6aa227-b9fd-4de4-b828-636926457ef7/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8f6aa227-b9fd-4de4-b828-636926457ef7/Untitled.png)
+![UI](https://i.imgur.com/wGOIvkZ.png)
